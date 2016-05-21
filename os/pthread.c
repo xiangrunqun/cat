@@ -37,7 +37,7 @@ int main(int argc, char *argv[]){
 void *runner(char *param){
 	int i=0,upper=atoi(param);
 	sum = 0;
-	for (int i = 0; i < upper; ++i)
+	for (; i < upper; ++i)
 	{
 		sum+=i;
 	}
