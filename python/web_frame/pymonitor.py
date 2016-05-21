@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
 
-''' my web index handler...'''
+''' 
+ kill and restart web app when sources file had changed.....
+'''
 
 __author__ = 'chan'
 
