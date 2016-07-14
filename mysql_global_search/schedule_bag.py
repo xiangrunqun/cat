@@ -12,7 +12,7 @@ import MySQLdb,os,os.path,shutil
 
 #logging.info('schedule start :%s',datetime.now())
 
-user,passwd,database,template_dir = 'bag','WWW.89mc.com','bagdb','/home/bag/bak/'
+user,passwd,database,template_dir = 'user_db','passwd_db','db','/home/bag/bak/'
 
 # scheduling task for updating disk space and testing time expired of corp....
 def duang():
