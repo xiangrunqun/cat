@@ -1,0 +1,42 @@
+<property>
+        <name>dfs.replication</name>
+        <value>1</value>
+    </property>
+
+
+
+
+    ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa && cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys && chmod 0600 ~/.ssh/authorized_keys
+
+
+
+    firewall-cmd --get-default-zone
+
+
+    firewall-cmd --get-active-zones
+
+    firewall-cmd --zone=public --add-port=9000/tcp && firewall-cmd --zone=public --permanent --add-port=9000/tcp && firewall-cmd --reload
+
+    firewall-cmd --permanent --remove-port=9866/tcp && firewall-cmd --reload
+
+
+  <property>
+    <name>dfs.name.dir</name>
+    <value>/root/hadoop/data/nn</value>
+  </property>
+  <property>
+    <name>dfs.data.dir</name>
+    <value>/root/hadoop/data/dn</value>
+  </property>
+
+rm: Cannot delete /user/root/hadoop-3.0.0-alpha1.tar.gz. Name node is in safe mode.
+
+
+server 0.asia.pool.ntp.org
+server 1.asia.pool.ntp.org
+server 2.asia.pool.ntp.org
+server 3.asia.pool.ntp.org
+
+
+开启9000防火墙，不然datanode显示不了。
+
