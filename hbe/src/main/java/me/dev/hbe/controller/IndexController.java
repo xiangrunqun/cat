@@ -1,5 +1,6 @@
 package me.dev.hbe.controller;
 
+import me.dev.util.LogUtil;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
@@ -22,12 +23,32 @@ public class IndexController {
         // 上传文件到hdfs系统。。
         // hadoop课件的 云存储系统4 的6：54位置
         Configuration conf = new Configuration();
-        conf.set("fs.default.name","hdfs://192.168.1.11:9000");
+        conf.set("fs.default.name","hdfs://192.168.1.6:9000");
         FileSystem hdfs = FileSystem.get(conf);
-        Path source = new Path("F:\\hdfs_test.log")
-                , dest = new Path("/data")
+        Path src = new Path("F:\\hdfs_test.log")
+                , dest = new Path("/data/hdfs_test.log")
                 ;
-        hdfs.copyFromLocalFile(source, dest);
+        hdfs.copyFromLocalFile(src, dest);
+        map.put("ret","success");
+        return map;
+    }
+
+    @RequestMapping("get_file") @ResponseBody
+    public Map<String,Object> get_file(@RequestParam Map<String,Object> map) throws Exception{
+        // 上传文件到hdfs系统。。
+        // hadoop课件的 云存储系统4 的6：54位置
+        Configuration conf = new Configuration();
+        conf.set("fs.default.name","hdfs://192.168.1.6:9000");
+        FileSystem hdfs = FileSystem.get(conf);
+        Path src = new Path("D:\\hdfs_test.log")
+                , dest = new Path("/data/hdfs_test.log")
+                ;
+//        LogUtil.info("----start copy file ---");
+//        hdfs.copyFromLocalFile(source, dest);
+
+        hdfs.copyToLocalFile(dest, src );
+
+//        LogUtil.info("----end copy file ---");
         map.put("ret","success");
         return map;
     }

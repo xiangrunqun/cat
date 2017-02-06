@@ -40,3 +40,8 @@ server 3.asia.pool.ntp.org
 
 开启9000防火墙，不然datanode显示不了。
 
+dfs.permissions.enabled  false
+
+
+org.apache.hadoop.ipc.RemoteException: File /data could only be replicated to 0 nodes instead of minReplication (=1).  There are 1 datanode(s) running and 1 node(s) are excluded in this operation.
+
