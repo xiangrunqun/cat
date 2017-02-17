@@ -65,6 +65,14 @@ public class IndexController {
         return map;
     }
 
+    @RequestMapping("log") @ResponseBody
+    public void log(@RequestParam Map<String,Object> map) throws Exception{
+        LogUtil.logger.debug("---- this is debug msg.. ------");
+        LogUtil.logger.info("---- this is info msg.. ------");
+        LogUtil.logger.warn("---- this is warn msg.. ------");
+        LogUtil.logger.error("---- this is error msg.. ------");
+    }
+
     private FileSystem getFS() {
         Configuration conf = new Configuration();
         conf.set("fs.default.name",fs_default_name);

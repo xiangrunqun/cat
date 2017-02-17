@@ -8,7 +8,7 @@ import org.springframework.util.StringUtils;
  * Created by Administrator on 2017/1/26 0026.
  */
 public class LogUtil {
-    final static Logger logger = LoggerFactory.getLogger(LogUtil.class);
+    public final static Logger logger = LoggerFactory.getLogger(LogUtil.class);
 
     public static void error(Exception e)
     {
