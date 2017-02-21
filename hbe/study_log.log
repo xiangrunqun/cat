@@ -42,11 +42,22 @@ server 3.asia.pool.ntp.org
 
 dfs.permissions.enabled  false
 
-
 org.apache.hadoop.ipc.RemoteException: File /data could only be replicated to 0 nodes instead of minReplication (=1).  There are 1 datanode(s) running and 1 node(s) are excluded in this operation.
 
 
+-- 动态添加删除datanode节点
+   删除节点
+      hdfs-core.xml 文件配置属性 dfs.hosts.exclude 并在这个文件中添加datanode的ip
+   添加节点
+      hdfs-core.xml 文件配置属性 dfs.hosts 并在这个文件中添加datanode的ip
+      启动新添加机器的datanode daemon。bin/hdfs --daemon start datanode
+  
+   以上的配置文件修改以后需要使用命令进行refresh。 bin/hdfs dfsadmin -refreshNodes
 
+
+
+
+-- 高可用配置
 hadoop HA --> switch between two namenode of difference machine..
 The HDFS High Availability feature addresses the above problems by providing the option of running two (and as of 3.0.0 more than two) redundant NameNodes in the same cluster in an Active/Passive configuration with a hot standby. This allows a fast failover to a new NameNode in the case that a machine crashes, or a graceful administrator-initiated failover for the purpose of planned maintenance.
 
