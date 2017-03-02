@@ -19,10 +19,11 @@ import java.util.Map;
 @Controller
 public class IndexController {
 
-    private String fs_default_name = "hdfs://192.168.1.11:9000";
+    private String fs_default_name = "hdfs://192.168.1.212:9000";
+    private String HADOOP_HOME = "E:\\big_data\\hadoop-3.0.0-alpha1";
 
     @RequestMapping("upload_file") @ResponseBody
-    public Map<String,Object> uploadFileToHdfs(@RequestParam Map<String,Object> map) throws Exception{
+    public String uploadFileToHdfs(@RequestParam Map<String,Object> map) throws Exception{
         // 上传文件到hdfs系统。。
         // hadoop课件的 云存储系统4 的6：54位置
         FileSystem hdfs = getFS();
@@ -33,11 +34,11 @@ public class IndexController {
         hdfs.copyFromLocalFile(src, dest);
         LogUtil.info("----end copy file ---");
         map.put("ret","success");
-        return map;
+        return map.toString();
     }
 
     @RequestMapping("get_file") @ResponseBody
-    public Map<String,Object> get_file(@RequestParam Map<String,Object> map) throws Exception{
+    public String get_file(@RequestParam Map<String,Object> map) throws Exception{
         // 上传文件到hdfs系统。。
         // hadoop课件的 云存储系统4 的19：13位置
         FileSystem hdfs = getFS();
@@ -48,11 +49,11 @@ public class IndexController {
         hdfs.copyToLocalFile(src, dest );
         LogUtil.info("----end get file ---");
         map.put("ret","success");
-        return map;
+        return map.toString();
     }
 
     @RequestMapping("delete_file") @ResponseBody
-    public Map<String,Object> delete_file(@RequestParam Map<String,Object> map) throws Exception{
+    public String delete_file(@RequestParam Map<String,Object> map) throws Exception{
         // 上传文件到hdfs系统。。
         // hadoop课件的 云存储系统4 的14：39位置
         FileSystem hdfs = getFS();
@@ -62,7 +63,7 @@ public class IndexController {
         hdfs.delete(dest, false );
         LogUtil.info("----end delete file ---");
         map.put("ret","success");
-        return map;
+        return map.toString();
     }
 
     @RequestMapping("log") @ResponseBody
@@ -77,7 +78,6 @@ public class IndexController {
         Configuration conf = new Configuration();
         conf.set("fs.default.name",fs_default_name);
         FileSystem hdfs = null;
-        String HADOOP_HOME = "E:\\big_data\\hadoop-3.0.0-alpha1";
         try {
             System.setProperty("hadoop.home.dir",HADOOP_HOME);
             System.setProperty("HADOOP_HOME", HADOOP_HOME);
