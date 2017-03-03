@@ -1,0 +1,60 @@
+windows设置：
+
+1. 安装oracle virtualbox
+2. 下载centos 6.5
+   http://mirrors.163.com/centos/6.5/isos/i386/
+
+3. JRE jdk7u51
+   > windows
+   > redhat linux
+
+4. 虚拟机网络选择-》桥接方式
+
+5. C:\Windows\System32\drivers\etc\hosts
+
+6, 虚拟机密码：password
+
+虚拟机设置
+1， 修改主机名
+    /etc/sysconfig/network
+
+2,  修改eth0
+    /etc/sysconfig/network-scripts/ifcfg-eth0
+
+DEVICE=eth0
+TYPE=Ethernet
+ONBOOT=yes
+NM_CONTROLLED=yes
+BOOTPROTO=static
+IPADDR=192.168.1.201
+NETMASK=255.255.255.0
+GATEWAY=192.168.1.1
+
+3, 关闭iptables
+   service iptables stop
+   chkconfig iptables off
+   
+4，关闭selinux
+   /etc/selinux/config
+   
+5，配置163 yum源
+   http://mirrors.163.com/.help/centos.html
+
+   运行yum makecache生产本地缓存
+
+6，配置dns
+   /etc/resolv.conf 
+   nameserver 61.139.2.69
+
+7，安装jdk
+   rpm -ivh
+   
+8, 配置主机名的反向解析
+   /etc/hosts
+   192.168.1.201 hadoop1
+
+9, vi .bashrc
+   export JAVA_HOME=/usr/java/latest
+   export PATH=$PATH:$JAVA_HOME/bin
+   
+10, rm -f /etc/udev/rules.d/70-persistent-net.rules

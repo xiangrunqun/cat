@@ -1,0 +1,64 @@
+1, 配置 core-site.xml和hdfs-site.xml
+   同步配置到所有节点
+
+2, 在3个节点上启动journalnode
+   hadoop-daemon.sh start journalnode
+3，在hadoop1上格式化namenode
+   hdfs namenode -format
+   
+4, 将 hadoop1 上的 /root/data/namenode/目录拷贝到hadoop2 /root/data
+5, 在 hadoop1 上启动namenode
+   hadoop-daemon.sh  start namenode
+   
+6，在 hadoop2 上启动namenode
+   hdfs namenode -bootstrapStandby
+
+7，停止hadoop1上的namenode
+   hadoop-daemon.sh  stop namenode
+
+8, 在3个节点上停止journalnode
+   hadoop-daemon.sh stop journalnode
+   
+9，在hadoop1上启动hdfs
+    start-dfs.sh
+
+10， hdfs haadmin
+
+11，configure fencer
+<property>
+  <name>dfs.ha.fencing.methods</name>
+  <value>sshfence</value>
+</property>
+
+<property>
+  <name>dfs.ha.fencing.ssh.private-key-files</name>
+  <value>/home/exampleuser/.ssh/id_rsa</value>
+</property>
+
+
+
+-----------------配置 zookeeper---------------------------
+1, 配置并同步zoo.cf到所有节点
+server.1=hadoop1:2888:3888
+server.2=hadoop2:2888:3888
+server.3=hadoop3:2888:3888
+
+dataDir=/root/data/zookeeper
+  
+2，在所有节点的dataDir下创建并编辑myid文件
+
+3，在所有节点启动zookeeper 
+   zkServer.sh start
+
+----------------配置 hdfs auto-failover-------------
+1， hdfs-site.xml
+<property>
+   <name>dfs.ha.automatic-failover.enabled</name>
+   <value>true</value>
+ </property>
+
+2, core-site.xml
+<property>
+   <name>ha.zookeeper.quorum</name>
+   <value>hadoop1:2181,hadoop2:2181,hadoop3:2181</value>
+ </property>
