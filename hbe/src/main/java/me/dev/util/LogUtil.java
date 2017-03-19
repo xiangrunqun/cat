@@ -27,9 +27,9 @@ public class LogUtil {
             case 3: result = parameters[2];parameter = parameters[1];flag = parameters[0]; break;
         }
         StringBuilder msg = new StringBuilder();
-        if(!StringUtils.isEmpty(flag)) msg.append("\r\nflag:").append(flag);
-        if(!StringUtils.isEmpty(parameter)) msg.append("\r\nparameter:").append(parameter);
-        if(!StringUtils.isEmpty(result)) msg.append("\r\nresult:").append(result);
+        if(!StringUtils.isEmpty(flag)) msg.append("\t").append(flag);
+        if(!StringUtils.isEmpty(parameter)) msg.append("\t").append(parameter);
+        if(!StringUtils.isEmpty(result)) msg.append("\t").append(result);
         if(msg.length() > 0) logger.info(msg.toString());
     }
 
