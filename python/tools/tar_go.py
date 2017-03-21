@@ -94,7 +94,7 @@ if __name__ == '__main__':
         print('no arugments using default')
         target_path = 'E:\\common_target'
         if(target_path):gogo()
-    #                E:\common_target\admin\WEB-INF\classes\com\aipost\admin\controller\cust
+    # E:\common_target\admin\WEB-INF\classes\com\aipost\admin\controller\cust
     # ss = os.listdir('E:\\common_target\\admin\\WEB-INF\\classes\\com\\aipost\\admin\\controller\\cust')
     # print(ss)
 

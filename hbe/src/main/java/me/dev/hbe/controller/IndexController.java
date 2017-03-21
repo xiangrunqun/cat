@@ -19,7 +19,7 @@ import java.util.Map;
 @Controller
 public class IndexController {
 
-    private String fs_default_name = "hdfs://192.168.1.212:9000";
+    private String fs_default_name = "hdfs://192.168.1.215:9820";
     private String HADOOP_HOME = "E:\\big_data\\hadoop-3.0.0-alpha1";
 
     @RequestMapping("upload_file") @ResponseBody
