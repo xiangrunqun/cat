@@ -18,11 +18,11 @@ def get_context_name(line_arr):
     else: return ''
 
 def assemble_file(context_name, line_arr, dir_flag):
-    # print('assemble_file:', context_name, line_arr, dir_flag)
+    #print('assemble_file:', context_name, line_arr, dir_flag)
     class_path_name = 'WEB-INF\\classes\\'
     dirs_tuple = os.path.split(line_arr[1])
     per_dir = dirs_tuple[0]
-    # print('dirs_tuple:', dirs_tuple)
+    #print('dirs_tuple:', dirs_tuple)
     # save file into output dir
     output_dir = target_path+'\\output\\'+context_name+'\\'
     if(dir_flag == 'source'):output_dir += class_path_name
@@ -39,7 +39,7 @@ def assemble_file(context_name, line_arr, dir_flag):
     src_path = output_dir.replace(target_path+'\\output',target_path)
 
     #file copy
-    print('src_file:',src_path+file_name_,'desc_file:',output_dir+'\\'+file_name_)
+    print('src_file:',src_path+'\\'+file_name_,'desc_file:',output_dir+'\\'+file_name_)
     try:
         shutil.copyfile(src_path+'\\'+file_name_,output_dir+'\\'+file_name_)
         # copy inner class
@@ -66,10 +66,10 @@ def gogo():
             if( line ):
                 line = line.decode('utf-8')
                 if('main/java/' in line ):
-                    # print(line.split('main/java/'))
+                    #print(line)
+                    if('.java' in line): line = line.replace('.java','.class')
                     line_arr = line.split('main/java/')
                     assemble_file(get_context_name(line_arr[0]),line_arr,'source')
-
                 elif ('main/webapp/' in line ):
                     # print(line.split('main/webapp/'))
                     line_arr = line.split('main/webapp/')
