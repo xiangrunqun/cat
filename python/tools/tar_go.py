@@ -8,13 +8,13 @@ import sys,os,shutil
 target_path = ''
 
 def get_context_name(line_arr):
-    if('cbestask' in line_arr):return 'cbestask'
-    elif ('cbesfile' in line_arr):return 'cbesfile'
-    elif ('admin' in line_arr):return 'admin'
-    elif ('basic' in line_arr):return 'basic'
-    elif ('pss' in line_arr):return 'pss'
-    elif ('sms' in line_arr):return 'sms'
-    elif ('cbes' in line_arr):return 'cbes'
+    if('cbestask/' in line_arr):return 'cbestask'
+    elif ('cbesfile/' in line_arr):return 'cbesfile'
+    elif ('admin/' in line_arr):return 'admin'
+    elif ('basic/' in line_arr):return 'basic'
+    elif ('pss/' in line_arr):return 'pss'
+    elif ('sms/' in line_arr):return 'sms'
+    elif ('cbes/' in line_arr):return 'cbes'
     else: return ''
 
 def assemble_file(context_name, line_arr, dir_flag):
@@ -99,4 +99,6 @@ if __name__ == '__main__':
     # print(ss)
 
 
+
+# 生产列表更新到 20170519
 
