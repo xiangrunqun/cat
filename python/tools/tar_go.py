@@ -15,6 +15,7 @@ def get_context_name(line_arr):
     elif ('pss/' in line_arr):return 'pss'
     elif ('sms/' in line_arr):return 'sms'
     elif ('cbes/' in line_arr):return 'cbes'
+    elif ('task/' in line_arr):return 'task'
     else: return ''
 
 def assemble_file(context_name, line_arr, dir_flag):
@@ -57,8 +58,6 @@ def assemble_file(context_name, line_arr, dir_flag):
     except Exception as e:
         print('copy file error...', e)
 
-
-
 def gogo():
     with open(target_path+'\\list', 'rb') as f:
         for line in f.readlines():
@@ -81,8 +80,6 @@ def gogo():
                     # print(line.split('main/resources/'))
                     line_arr = line.split('main/resources/')
                     assemble_file(get_context_name(line_arr[0]),line_arr,'source')
-            #if(line.index('main/java/') )
-
 
 if __name__ == '__main__':
     # print(sys.argv[1])
@@ -94,11 +91,3 @@ if __name__ == '__main__':
         print('no arugments using default')
         target_path = 'E:\\common_target'
         if(target_path):gogo()
-    # E:\common_target\admin\WEB-INF\classes\com\aipost\admin\controller\cust
-    # ss = os.listdir('E:\\common_target\\admin\\WEB-INF\\classes\\com\\aipost\\admin\\controller\\cust')
-    # print(ss)
-
-
-
-# 生产列表更新到 20170519
-
